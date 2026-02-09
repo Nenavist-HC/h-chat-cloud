@@ -8,7 +8,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 @socketio.on('message')
 def handle_message(data):
     # Рассылаем сообщение всем подключенным
-    emit('response', data, broadcast=True)
+    emit('response', data, include_self=False, broadcast=True)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
